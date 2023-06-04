@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Search anything</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="images/search.png" type="image/x-icon" >
+  </head>
+  <body>
+    <section>
+        <div class="main">
+            <div class="theme-switcher">
+                <input type="checkbox" id="switcher">
+                <label for=switcher></label>
+            </div>
+
+            <img src="images/google.png">
+            <div class="searchBox">
+                <input type="text" name="" class="query"> 
+                <div class="icons">    
+                    <button class="search"><img src = "images/search.png"></button>
+                    <button class="mic"><img src = "images/mic.png"></button>
+                </div>
+            </div>  
+        </div>
+        <div>
+            <button class="searchButton">Search</button>
+        </div>
+    </section>
+
+<script>
+        let query = document.querySelector('.query');
+        let searchButton = document.querySelector('.searchButton');
+        let search = document.querySelector('.search');
+        let url = 'https://www.google.com/search?q=' + query;
+
+        searchButton.onclick = function(){
+            searchWeb();
+        }
+        search.onclick = function(){
+            searchWeb();
+        }
+
+        function searchWeb(){
+            url = 'https://www.google.com/search?q=' + query.value;
+            if (query.value.length > 0)
+                window.open(url, '_self');
+        }
+
+        const input = document.querySelector(".theme-switcher input");
+        input.addEventListener("change", (e) => {
+            if (e.target.checked) {
+                document.body.setAttribute("data-theme", "dark");
+            } else {
+                document.body.setAttribute("data-theme", "light");
+            }
+        });
+        
+    </script>
+  </body>
+</html>
