@@ -13,7 +13,6 @@
                 <input type="checkbox" id="switcher">
                 <label for=switcher></label>
             </div>
-
             <img src="images/google.png">
             <div class="searchBox">
                 <input type="text" name="" class="query"> 
@@ -24,6 +23,10 @@
             </div>  
         </div>
         <div>
+            <select name="SearchEnginSelect" id="SearchEnginSelect">
+                <option class="SearchEnginOption" value="google">google</option>
+                <option class="SearchEnginOption" value="bing">bing</option>
+            </select>
             <button class="searchButton">Search</button>
         </div>
     </section>
@@ -32,7 +35,14 @@
         let query = document.querySelector('.query');
         let searchButton = document.querySelector('.searchButton');
         let search = document.querySelector('.search');
-        let url = 'https://www.google.com/search?q=' + query;
+        let searchEngin = document.getElementById('SearchEnginSelect');
+        // var searchEnginValue = searchEngin.options[searchEngin.selectedIndex].value;
+        // var url = 'https://www.' + searchEnginValue + '.com/search?q=' + query.value;
+   
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') 
+                searchWeb();
+        })
 
         searchButton.onclick = function(){
             searchWeb();
@@ -42,12 +52,16 @@
         }
 
         function searchWeb(){
-            url = 'https://www.google.com/search?q=' + query.value;
+            var searchEnginValue = searchEngin.options[searchEngin.selectedIndex].text;
+            var url = 'https://www.' + searchEnginValue + '.com/search?q=' + query.value;
+
             if (query.value.length > 0)
                 window.open(url, '_self');
+            console.log("Search Done");
         }
 
         const input = document.querySelector(".theme-switcher input");
+
         input.addEventListener("change", (e) => {
             if (e.target.checked) {
                 document.body.setAttribute("data-theme", "dark");
