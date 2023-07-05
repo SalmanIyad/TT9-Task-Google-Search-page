@@ -1,4 +1,4 @@
-# Google-page
+# Google-Search-page-Task 
 Simple Google search page with HTML, CSS, JS
 
-Link : https://salmaniyad.github.io/Google-page/
+Link of deploy: https://salmaniyad.github.io/Google-page/
